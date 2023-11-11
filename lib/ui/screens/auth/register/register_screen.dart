@@ -1,6 +1,8 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce/data/repos/auth_repo/auth_repo_impl.dart';
-import 'package:e_commerce/domain/use_cases/register_use_case.dart';
+import 'package:e_commerce/domain/di/di.dart';
 import 'package:e_commerce/ui/screens/auth/register/register_view_model.dart';
+import 'package:e_commerce/ui/screens/main/main_screen.dart';
 import 'package:e_commerce/ui/utils/base_request_states.dart';
 import 'package:e_commerce/ui/utils/dialog_utils.dart';
 import 'package:e_commerce/ui/widgets/custom_button.dart';
@@ -11,11 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const String routeName = "register";
-  RegisterViewModel viewModel =
-  RegisterViewModel(
-      RegisterUseCase(AuthRepoImpl()
-      )
-  );
+  RegisterViewModel viewModel = getIt();
    RegisterScreen( {super.key});
 
   @override
@@ -27,6 +25,7 @@ class RegisterScreen extends StatelessWidget {
           showLoading(context);
         }else if (state is BaseRequestSuccessState){
           Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, MainScreen.routeName);
         }else if(state is BaseRequestErrorState){
           Navigator.pop(context);
           showErrorDialog(context, state.message);

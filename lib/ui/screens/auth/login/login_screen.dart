@@ -1,7 +1,10 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce/data/repos/auth_repo/auth_repo_impl.dart';
+import 'package:e_commerce/domain/di/di.dart';
 import 'package:e_commerce/domain/use_cases/login_use_case.dart';
 import 'package:e_commerce/ui/screens/auth/login/login_view_model.dart';
 import 'package:e_commerce/ui/screens/auth/register/register_screen.dart';
+import 'package:e_commerce/ui/screens/main/main_screen.dart';
 import 'package:e_commerce/ui/utils/app_assets.dart';
 import 'package:e_commerce/ui/utils/base_request_states.dart';
 import 'package:e_commerce/ui/utils/dialog_utils.dart';
@@ -13,7 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget{
   static const String routeName = "login";
-  LoginViewModel viewModel = LoginViewModel(LoginUseCase(AuthRepoImpl()));
+  LoginViewModel viewModel = getIt();
 
 
   @override
@@ -136,6 +139,7 @@ class LoginScreen extends StatelessWidget{
               showLoading(context);
             }else if (state is BaseRequestSuccessState){
             Navigator.pop(context);
+            Navigator.pushReplacementNamed(context, MainScreen.routeName);
           }else if (state is BaseRequestErrorState){
             Navigator.pop(context);
             showErrorDialog(context, state.message);
