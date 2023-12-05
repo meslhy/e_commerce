@@ -1,7 +1,7 @@
 import 'package:e_commerce/ui/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
-void showLoading(BuildContext context) {
+ showLoading(BuildContext context) {
   showDialog(
       context: context,
       barrierDismissible: false,

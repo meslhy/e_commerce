@@ -27,6 +27,6 @@ class SharedPrefsUtils {
 
   Future<String?> getToken()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getString("token");
+    return prefs.getString("token");
   }
 }

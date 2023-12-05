@@ -31,7 +31,13 @@ class MyTheme {
             fontSize: 18,
             color: AppColors.primaryColor,
             fontWeight: FontWeight.w600
-        )
+        ),
+      ///to title text
+      labelLarge: const TextStyle(
+          fontSize: 22,
+          color: AppColors.blackColor,
+          fontWeight: FontWeight.bold
+      ),
     ),
   );
 }

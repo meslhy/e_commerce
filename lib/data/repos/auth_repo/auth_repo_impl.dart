@@ -7,6 +7,7 @@ import 'package:e_commerce/data/model/responses/AuthResponse.dart';
 import 'package:e_commerce/data/utils/shared_utils.dart';
 import 'package:e_commerce/domain/repos/auth_repo/auth_repo.dart';
 import 'package:e_commerce/ui/utils/constants.dart';
+import 'package:e_commerce/ui/utils/end_points.dart';
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,7 +24,7 @@ class AuthRepoImpl extends AuthRepo {
     if(connectivityResult ==ConnectivityResult.wifi ||connectivityResult ==ConnectivityResult.mobile) {
       try{
       Uri url = Uri.https(
-          "ecommerce.routemisr.com", "/api/v1/auth/signin");
+          EndPoints.baseUrl, EndPoints.login);
 
       Response serverResponse = await post(url, body: {
         "email": email,
@@ -54,7 +55,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failuer, bool>> register(RegisterRequestBody body) async {
     final connectivityResult = await (connectivity.checkConnectivity());
     if(connectivityResult ==ConnectivityResult.wifi ||connectivityResult ==ConnectivityResult.mobile){
-      Uri url = Uri.https("ecommerce.routemisr.com","/api/v1/auth/signup");
+      Uri url = Uri.https(EndPoints.baseUrl,EndPoints.register);
 
       Response serverResponse = await post(url , body: {
         "name": body.name,

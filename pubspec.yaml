@@ -46,6 +46,9 @@ dependencies:
   injectable: 2.3.2
   # add get_it
   get_it: 7.6.4
+  readmore: ^2.2.0
+  flutter_image_slideshow: ^0.1.6
+
 
 dev_dependencies:
   flutter_test:

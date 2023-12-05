@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/data/model/responses/category_dm.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
 
-  const CategoryItem({super.key});
+  CategoryDM categoryDM;
+   CategoryItem(this.categoryDM);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +18,12 @@ class CategoryItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundImage: CachedNetworkImageProvider(
-              "",
+              categoryDM.image!,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
-            "",
+            categoryDM.name!,
             textAlign: TextAlign.center,
             maxLines: 1,
           )
